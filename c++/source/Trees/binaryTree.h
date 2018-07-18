@@ -1,20 +1,20 @@
 #ifndef BINARYTREE
 #define BINARYTREE
 
-#include "Include/publicAttributeNode.h"
+#include "Include/publicAttributesNode.h"
 
 class binaryTree{
 	private:
-		node * head;
 		int size;
 		int (*compare)(void *, void *);
 	
 	public:
-		void setCompareMethod(int (*compMethod)(void *, void *)){compare = compMethod};
+		node * head;
+		void setCompareMethod(int (*compMethod)(void *, void *)){compare = compMethod;};
 		int addNode( node * );
 		int findNode( node * );
 		int removeNode( void * );
-		int printTree();
-}
+		int printTree(node *, int);
+};
 
 #endif
