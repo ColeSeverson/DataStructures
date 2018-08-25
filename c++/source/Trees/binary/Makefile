@@ -1,0 +1,2 @@
+binary:
+	g++ -g -o test  test.cpp binaryTree.cpp 

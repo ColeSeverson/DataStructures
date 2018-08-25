@@ -1,18 +1,19 @@
 #ifndef NODE
 #define NODE
+#include <stdio.h>
 
 class node{
 	public:
 		void * data;
-		node * left = NULL;
-		node * right = NULL;
+		node * left;
+		node * right;
 		node * parent;
 	
 		//various constructors
-		node()			: parent(NULL), data(NULL){};
-		node(node * p) 	 	: parent(p), data(NULL){};
-		node(void * d)  	: parent(NULL), data(d){};
-		node(void * d, node * p): parent(p), data(d){};
+		node()			: parent(NULL), data(NULL), left(NULL), right(NULL){};
+		node(node * p) 	 	: parent(p), data(NULL), left(NULL), right(NULL){};
+		node(void * d)  	: parent(NULL), data(d), left(NULL), right(NULL){};
+		node(void * d, node * p): parent(p), data(d), left(NULL), right(NULL){};
 
 /*		int compare( node * n ){
 			if(compareMethod == NULL){

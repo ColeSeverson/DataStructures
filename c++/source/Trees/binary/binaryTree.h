@@ -1,7 +1,7 @@
 #ifndef BINARYTREE
 #define BINARYTREE
 
-#include "Include/publicAttributesNode.h"
+#include "../../Include/publicAttributesNode.h"
 
 class binaryTree{
 	private:
@@ -9,12 +9,13 @@ class binaryTree{
 		int (*compare)(void *, void *);
 	
 	public:
+		binaryTree();
 		node * head;
 		void setCompareMethod(int (*compMethod)(void *, void *)){compare = compMethod;};
-		int addNode( node * );
-		int findNode( node * );
+		int addNode( void * );
+		int findNode( void * );
 		int removeNode( void * );
-		int printTree(node *, int);
+		int printTree();
 };
 
 #endif
