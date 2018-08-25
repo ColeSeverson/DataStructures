@@ -4,8 +4,6 @@
 
 #include "./binaryTree.h"
 
-binaryTree::binaryTree():head(NULL){
-}
 int binaryTree::addNode( void * in ){
 	node * toAdd = new node(in);
 
@@ -17,7 +15,7 @@ int binaryTree::addNode( void * in ){
 	node * previous = NULL;
 	while(current != NULL){
 		previous = current;
-		if (compare(toAdd, current) > 0){
+		if (compare(toAdd->data, current->data) > 0){
 			current = current->right;
 		}else{
 			current = current->left;
@@ -26,7 +24,7 @@ int binaryTree::addNode( void * in ){
 	}
 
 	toAdd->parent = previous;
-	if (compare(toAdd, previous) > 0){
+	if (compare(toAdd->data, previous->data) > 0){
 		previous->right = toAdd;
 		return 0;
 	}else{
@@ -34,18 +32,19 @@ int binaryTree::addNode( void * in ){
 		return 0;
 	}
 }
-int binaryTree::findNode( void * ){}
+int binaryTree::findNode( void * ){//returns 0 if the node is present, 1 otherwise
+	
+}
 int binaryTree::removeNode( void * ){}
-int print(node * current, int depth){
-	if(current!=NULL){
-		if(current->left)
-			print(current->left, depth+4);
-		if(depth)
-			std::cout << std::setw(depth) << ' ';
-		printf("%d\n", *(int *)(current->data));
-		if(current->right)
-			print(current->right, depth+4);
-	}
+void print(node * current, int depth){
+	if(!current)
+		return;
+	print(current->left, depth+4);
+	
+	std::cout << std::setw(depth) << ' ';
+	printf("%d\n", *(int *)(current->data));
+
+	print(current->right, depth+4);
 }
 int binaryTree::printTree(){
 	print(head, 0);

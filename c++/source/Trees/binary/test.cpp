@@ -9,7 +9,7 @@ int compare(void * a, void * b){
 
 int main(){
 
-	int array[5] = { 7, 22, 8, 1, 6 };
+	int array[5] = { 50, 52, 49, 51, 53 };
 	binaryTree * bin = new binaryTree();
 	bin->setCompareMethod(&compare);
 	for(int i = 0; i < 5; i++){

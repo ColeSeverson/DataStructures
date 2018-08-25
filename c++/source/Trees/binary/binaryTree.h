@@ -9,7 +9,7 @@ class binaryTree{
 		int (*compare)(void *, void *);
 	
 	public:
-		binaryTree();
+		binaryTree():head(NULL){}
 		node * head;
 		void setCompareMethod(int (*compMethod)(void *, void *)){compare = compMethod;};
 		int addNode( void * );
