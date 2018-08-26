@@ -7,6 +7,7 @@ class binaryTree{
 	private:
 		int size;
 		int (*compare)(void *, void *);
+		node * deleteNode(node *, void *);
 	
 	public:
 		binaryTree():head(NULL){}

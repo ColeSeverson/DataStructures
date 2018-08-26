@@ -16,6 +16,8 @@ int main(){
 		bin->addNode((void *)(&array[i]));
 	}
 	bin->printTree();
-
+	printf("%d\n",bin->findNode((void *)(&array[3])));
+	bin->removeNode((void *)(&array[3]));
+	bin->printTree();
 return 0;
 }
