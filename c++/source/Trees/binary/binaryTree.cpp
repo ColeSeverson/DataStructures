@@ -46,16 +46,22 @@ int binaryTree::findNode( void * toFind){//returns 0 if the node is present, 1 o
 	}
 	return 1; //failed	
 }
+node * findSmallestChild(node * in){//used to find the smallest child of a node// just following the left path
+	node * current = in;
+	while(current->left != NULL)
+		current = current->left;
+	return current;
+}
 node * binaryTree::deleteNode(node * current, void * key){
-	if(current == NULL)
+	if(current == NULL)//if the node doesnt exist
 		return NULL;
-	int dif = compare(key, current->data);
-	if(dif < 1)
+	int dif = compare(key, current->data);//compare the node using given compare method
+	if(dif < 0)
 		current->left = deleteNode(current->left, key);
 	else if(dif > 0)
 		current->right = deleteNode(current->right, key);
 	else{
-		if(current->left == NULL){
+		if(current->left == NULL){//if it has found the node to be removed it will test if there is one child or not
 			node * temp = current->right;
 			delete(current);
 			return temp;
@@ -63,26 +69,33 @@ node * binaryTree::deleteNode(node * current, void * key){
 			node * temp = current->left;
 			delete(current);
 			return temp;
-		}
+		}//if there is two children we find the inorder succesor to the right child and that will replace this node
+		node * temp = findSmallestChild(current->right);
+		current->data = temp->data;
+		current->right = deleteNode(current->right, temp->data);
 	}
 }
-int binaryTree::removeNode( void * toDelete){
-	if (deleteNode(head, toDelete) != NULL)
-		return 0;
-	else 
-		return 1;
+int binaryTree::removeNode( void * toDelete){//a precursor method so that programs dont have to include the Node * construct
+	if(findNode(toDelete) == 0){
+		deleteNode(head, toDelete);
+	}else{
+		printf("Node not found for delete with signature %p", toDelete);
+	}
 }
 
-void print(node * current, int depth){
+void binaryTree::recursivePrint(node * current, int depth){//prints the left side first then the right side.
 	if(!current)
 		return;
-	print(current->left, depth+4);
+	recursivePrint(current->left, depth+4);
 	
 	std::cout << std::setw(depth) << ' ';
-	printf("%d\n", *(int *)(current->data));
+	print(current->data);	
 
-	print(current->right, depth+4);
+	recursivePrint(current->right, depth+4);
 }
 int binaryTree::printTree(){
-	print(head, 0);
+	if(print == NULL){
+		printf("Please use setPrintMethod(void method(void *)) to set a print method for your datatype including newline\n");
+	}
+	recursivePrint(head, 0);
 }
