@@ -12,7 +12,9 @@ class binaryTree{
 		node * deleteNode(node *, void *);
 	
 	public:
+		~binaryTree();
 		binaryTree():head(NULL){}
+		binaryTree(int (*compareMethod)(void *, void *), void (*printMethod)(void*)){compare = compareMethod; print = printMethod;};
 		node * head;
 		void setCompareMethod(int (*compMethod)(void *, void *)){compare = compMethod;};
 		void setPrintMethod(void (*printMethodInput)(void *)){print = printMethodInput;};

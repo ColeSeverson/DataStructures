@@ -3,7 +3,17 @@
 #include <iomanip>
 
 #include "./binaryTree.h"
-
+void removeChildren(node * current){
+	if(current->left != NULL)
+		removeChildren(current->left);
+	if(current->right != NULL)
+		removeChildren(current->right);
+	delete(current);
+}
+binaryTree::~binaryTree(){
+	if(head != NULL)
+		removeChildren(head);
+}
 int binaryTree::addNode( void * in ){
 	node * toAdd = new node(in);
 

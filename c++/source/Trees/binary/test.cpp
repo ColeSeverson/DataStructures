@@ -33,5 +33,8 @@ int main(){
 	bin2->printTree();
 	bin2->removeNode((void *)(&array[0]));
 	bin2->printTree();
+
+	delete(bin);
+	delete(bin2);
 return 0;
 }
