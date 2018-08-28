@@ -1,3 +1,6 @@
+#ifndef AVL_h
+#define AVL_h
+
 #include <stdio.h>
 #include <iostream>
 #include <iomanip>
@@ -7,56 +10,101 @@
 class avlTree{
 	
 	private:
-		int size;
-		int (*compare)(void*, void*);
-		void (*print)(void *);
-		node * head;
-		void removeChildren(node * current){//support method for the destructor used to delete all children recursivley
-			if(current->left != NULL)
-				removeChildren(current->left);
-			if(current->right != NULL)
-				removeChildren(current->right);
-			delete(current);
-		}
-		node * findSmallestChild(node * in){//used to find the smallest child of a node// just following the left path
-			node * current = in;
-			while(current->left != NULL)
-				current = current->left;
-			return current;
-		}
-		void recursivePrint(node * current, int depth){//prints the left side first then the right side.
-			if(!current)
-				return;
-			recursivePrint(current->left, depth+4);
-			
-			std::cout << std::setw(depth) << ' ';
-			print(current->data);	
+	int size;
+	int (*compare)(void*, void*);
+	void (*print)(void *);
+	node * head;
 
-			recursivePrint(current->right, depth+4);
+	//the next two funcitons height and balanceFactor are used for the avl balancing
+	int height(node * root){
+		if(root == NULL)
+			return 1;
+		else{
+			int left = height(root->left);
+			int right = height(root->right);
+			return ((left > right) ?  left :  right);
 		}
-		node * deleteNode(node * current, void * key){
-			if(current == NULL)//if the node doesnt exist
-				return NULL;
-			int dif = compare(key, current->data);//compare the node using given compare method
-			if(dif < 0)
-				current->left = deleteNode(current->left, key);
-			else if(dif > 0)
-				current->right = deleteNode(current->right, key);
-			else{
-				if(current->left == NULL){//if it has found the node to be removed it will test if there is one child or not
-					node * temp = current->right;
-					delete(current);
-					return temp;
-				}else if (current->right == NULL){
-					node * temp = current->left;
-					delete(current);
-					return temp;
-				}//if there is two children we find the inorder succesor to the right child and that will replace this node
-				node * temp = findSmallestChild(current->right);
-				current->data = temp->data;
-				current->right = deleteNode(current->right, temp->data);
-			}
+	}
+	int balanceFactor(node * root){
+		return height(root->right) - height(root->left);
+	}
+	void rotateRight(node * parent){
+		node * a = parent->left;
+		parent->left = a->right;
+		if (a->right != NULL)
+			a->right->parent = parent;
+		a->parent = parent->parent;
+		if (parent->parent == NULL)
+			head = a;
+		else if (parent == parent->parent->left)
+			parent->parent->left = a;
+		else
+			parent->parent->right = a;
+		a->right = parent;
+		parent->parent = a;
+	}
+	void rotateLeft(node * parent){
+		node * a = parent->right;
+		parent->right = a->left;
+		if (a->left != NULL)
+			a->left->parent = parent;
+		a->parent = parent->parent;
+		if (parent->parent == NULL)
+			head = a;
+		else if (parent == parent->parent->left)
+			parent->parent->left = a;
+		else
+			parent->parent->right = a;
+		a->left = parent;
+		parent->parent = a;
+	}
+	//after this point are the basic functions for trees
+	void removeChildren(node * current){//support method for the destructor used to delete all children recursivley
+		if(current->left != NULL)
+			removeChildren(current->left);
+		if(current->right != NULL)
+			removeChildren(current->right);
+		delete(current);
+	}
+	node * findSmallestChild(node * in){//used to find the smallest child of a node// just following the left path
+		node * current = in;
+		while(current->left != NULL)
+			current = current->left;
+		return current;
+	}
+	void recursivePrint(node * current, int depth){//prints the left side first then the right side.
+		if(!current)
+			return;
+		recursivePrint(current->left, depth+4);
+		
+		std::cout << std::setw(depth) << ' ';
+		print(current->data);	
+
+		recursivePrint(current->right, depth+4);
+	}
+	node * deleteNode(node * current, void * key){
+		if(current == NULL)//if the node doesnt exist
+			return NULL;
+		int dif = compare(key, current->data);//compare the node using given compare method
+		if(dif < 0)
+			current->left = deleteNode(current->left, key);
+		else if(dif > 0)
+			current->right = deleteNode(current->right, key);
+		else{
+			if(current->left == NULL){//if it has found the node to be removed it will test if there is one child or not
+				node * temp = current->right;
+				delete(current);
+				return temp;
+			}else if (current->right == NULL){
+				node * temp = current->left;
+				delete(current);
+				return temp;
+			}//if there is two children we find the inorder succesor to the right child and that will replace this node
+			node * temp = findSmallestChild(current->right);
+			current->data = temp->data;
+			current->right = deleteNode(current->right, temp->data);
 		}
+	}
 
 	public:
 	~avlTree(){//destructor
@@ -125,3 +173,4 @@ class avlTree{
 		recursivePrint(head, 0);
 	};
 };
+#endif /* AVL_h */

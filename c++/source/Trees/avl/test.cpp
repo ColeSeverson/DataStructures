@@ -11,6 +11,15 @@ void print(void * a){
 	printf("%d\n", a1);
 }
 int main(){
+	avlTree * avl = new avlTree();
+	avl->setCompareMethod(compare);
+	avl->setPrintMethod(print);
 
+	int array[5] = {5, 6, 3, 2, 4};
+	for(int i = 0; i < 5; i ++){
+		avl->addNode(&(array[i]));
+	}
+	avl->printTree();
+	
 return 0;
 }
