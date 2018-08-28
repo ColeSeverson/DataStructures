@@ -1,38 +1,29 @@
 #ifndef NODE
 #define NODE
+#include <stdio.h>
 
 class node{
-	private:
-		void * data;
-		node * left = NULL;
-		node * right = NULL;
-		node * parent;
 	public:
+		void * data;
+		node * left;
+		node * right;
+		node * parent;
+	
 		//various constructors
-		node()			: parent(NULL), data(NULL){};
-		node(node * p) 	 	: parent(p), data(NULL){};
-		node(void * d)  	: parent(NULL), data(d){};
-		node(void * d, node * p): parent(p), data(d){};
+		node()			: parent(NULL), data(NULL), left(NULL), right(NULL){};
+		node(node * p) 	 	: parent(p), data(NULL), left(NULL), right(NULL){};
+		node(void * d)  	: parent(NULL), data(d), left(NULL), right(NULL){};
+		node(void * d, node * p): parent(p), data(d), left(NULL), right(NULL){};
 
-		void * getData(){ return data; };
-		node * getLeft(){ return left; };
-		node * getRight(){ return right; };
-		node * getNext(){ return left; };
-		node * getParent(){ return parent; };
-	/*	int compare( node * n ){
-			if(compareNode == NULL){
+/*		int compare( node * n ){
+			if(compareMethod == NULL){
 				printf("define a function to compare the Nodes please\n"); 
 				return -1;
 			}else{
-			return compareNode(this->data, n->getData());
+				return compareMethod(this->data, n->data);
 			}
 		}*/
 
-		void setData( void * dat ){ data = dat; };
-		void setLeft( node * lef ){ left = lef; };
-		void setRight( node * righ ){ right = righ; };
-		void setNext( node * nex ){ left = nex; }; 
-		void setParent( node* par ){ parent = par; };
 };
 
 #endif
