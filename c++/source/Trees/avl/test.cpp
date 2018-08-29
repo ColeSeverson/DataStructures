@@ -15,8 +15,8 @@ int main(){
 	avl->setCompareMethod(compare);
 	avl->setPrintMethod(print);
 
-	int array[5] = {5, 6, 3, 2, 4};
-	for(int i = 0; i < 5; i ++){
+	int array[16] = {5, 6, 3, 2, 4, 10, 12, 11, 13, 34, 54, 55, 0, -1, -4, -100};
+	for(int i = 0; i < 16; i ++){
 		avl->addNode(&(array[i]));
 	}
 	avl->printTree();

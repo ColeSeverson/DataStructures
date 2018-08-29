@@ -143,6 +143,9 @@ class avlTree{
 			previous->left = toAdd;
 			return 0;
 		}
+		//before this point the addNode method is the exact same as BinaryTree 
+		//after this is the AVL balancing
+
 	};
 	int findNode( void * toFind){//returns 0 if the node is present, 1 otherwise
 		node * current = head;
