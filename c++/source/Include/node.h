@@ -5,9 +5,10 @@
 class node{
 	public:
 		void * data;
-		node * left;
 		node * right;
 		node * parent;
+		node * left;
+		node * next;
 	
 		//various constructors
 		node()			: parent(NULL), data(NULL), left(NULL), right(NULL){};

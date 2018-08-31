@@ -1,3 +1,6 @@
+#ifndef BINARY_H
+#define BINARY_H
+
 #include <stdio.h>
 #include <iostream>
 #include <iomanip>
@@ -125,3 +128,4 @@ class binaryTree{
 		recursivePrint(head, 0);
 	};
 };
+#endif
