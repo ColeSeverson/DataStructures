@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "./stack.h"
+#include "./queue.h"
 
 void print(void * v){
 	printf("%d\n", *((int *)(v)));
@@ -8,7 +8,7 @@ void print(void * v){
 
 int main(){
 
-	stack * ll = new stack();
+	queue * ll = new queue();
 	int array[5] = {1, 5, 3, 4, 6};
 	
 	for(int i = 0; i < 5; i++)
@@ -19,8 +19,7 @@ int main(){
 	ll->print();
 	
 	for(int i = 0; i < 5; i++){
-		ll->pop();
-		ll->print();
+		print(ll->pop());
 	}
 
 return 0;

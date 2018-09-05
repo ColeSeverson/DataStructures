@@ -1,14 +1,14 @@
 #include "../../Include/node.h"
 
 
-class linkedList {
+class stack {
 
 	private:
 		node * head;
 		void (*printNode) (void *);
 
 	public:
-		int push(void * toAdd){
+		int push(void * toAdd){//Pushes node into the linked List
 			node * temp = new node(toAdd);
 
 			if(head == NULL){
@@ -25,16 +25,26 @@ class linkedList {
 			previous->next = temp;
 			return 0;
 		};
+		void * pop(){
+			if(head == NULL)
+				return NULL;
+			
+			node * temp = head;
+			head = temp->next;
+			void * toReturn = temp->data;
+			delete temp;
+			return toReturn;
+		};
 		void setPrintMethod(void (*printMethod)(void *)){
 			printNode = printMethod;
-		}
+		};
 		void print(){
 			node * current = head;
 			while(current != NULL){
 				printNode(current->data);
 				current = current->next;
 			}
-		}
+		};
 
 
 };
