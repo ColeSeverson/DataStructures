@@ -23,6 +23,7 @@ class queue {
 
 			temp->parent = current;
 			current->next = temp;
+			tail = temp;
 
 			return 0;
 		};
