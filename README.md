@@ -5,3 +5,4 @@ This repository is meant to be a database of Structures that I have implemented 
 ## Installation
 
 Follow normal git procedures, fork the repository if you would like to pull request or clone it otherwise. 
+To use one of the structures just include the header.

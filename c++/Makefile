@@ -1,4 +1,5 @@
 PROGRAMS=binaryTree
+CC=g++
 binary: 
 	g++ -g -o binaryTree ./source/Trees/binary/test.cpp
 
