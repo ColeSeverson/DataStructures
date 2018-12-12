@@ -1,3 +1,6 @@
+#ifndef QUEUE
+#define QUEUE
+
 #include "../../Include/node.h"
 
 
@@ -52,3 +55,4 @@ class queue {
 
 
 };
+#endif

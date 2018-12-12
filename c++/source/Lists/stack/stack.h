@@ -1,3 +1,6 @@
+#ifndef STACK
+#define STACK
+
 #include "../../Include/node.h"
 
 
@@ -48,3 +51,4 @@ class stack {
 
 
 };
+#endif
