@@ -1,0 +1,8 @@
+/home/coleseverson/Programming/DataStructures/C#/Libraries/obj/Debug/netstandard2.0/Libraries.csprojAssemblyReference.cache
+/home/coleseverson/Programming/DataStructures/C#/Libraries/obj/Debug/netstandard2.0/Libraries.AssemblyInfoInputs.cache
+/home/coleseverson/Programming/DataStructures/C#/Libraries/obj/Debug/netstandard2.0/Libraries.AssemblyInfo.cs
+/home/coleseverson/Programming/DataStructures/C#/Libraries/bin/Debug/netstandard2.0/Libraries.deps.json
+/home/coleseverson/Programming/DataStructures/C#/Libraries/bin/Debug/netstandard2.0/Libraries.dll
+/home/coleseverson/Programming/DataStructures/C#/Libraries/bin/Debug/netstandard2.0/Libraries.pdb
+/home/coleseverson/Programming/DataStructures/C#/Libraries/obj/Debug/netstandard2.0/Libraries.dll
+/home/coleseverson/Programming/DataStructures/C#/Libraries/obj/Debug/netstandard2.0/Libraries.pdb
