@@ -1,0 +1,14 @@
+/home/coleseverson/Programming/DataStructures/C#/Build/bin/Debug/netcoreapp3.0/Build
+/home/coleseverson/Programming/DataStructures/C#/Build/bin/Debug/netcoreapp3.0/Build.deps.json
+/home/coleseverson/Programming/DataStructures/C#/Build/bin/Debug/netcoreapp3.0/Build.runtimeconfig.json
+/home/coleseverson/Programming/DataStructures/C#/Build/bin/Debug/netcoreapp3.0/Build.runtimeconfig.dev.json
+/home/coleseverson/Programming/DataStructures/C#/Build/bin/Debug/netcoreapp3.0/Build.dll
+/home/coleseverson/Programming/DataStructures/C#/Build/bin/Debug/netcoreapp3.0/Build.pdb
+/home/coleseverson/Programming/DataStructures/C#/Build/bin/Debug/netcoreapp3.0/Libraries.dll
+/home/coleseverson/Programming/DataStructures/C#/Build/bin/Debug/netcoreapp3.0/Libraries.pdb
+/home/coleseverson/Programming/DataStructures/C#/Build/obj/Debug/netcoreapp3.0/Build.csprojAssemblyReference.cache
+/home/coleseverson/Programming/DataStructures/C#/Build/obj/Debug/netcoreapp3.0/Build.AssemblyInfoInputs.cache
+/home/coleseverson/Programming/DataStructures/C#/Build/obj/Debug/netcoreapp3.0/Build.AssemblyInfo.cs
+/home/coleseverson/Programming/DataStructures/C#/Build/obj/Debug/netcoreapp3.0/Build.csproj.CopyComplete
+/home/coleseverson/Programming/DataStructures/C#/Build/obj/Debug/netcoreapp3.0/Build.dll
+/home/coleseverson/Programming/DataStructures/C#/Build/obj/Debug/netcoreapp3.0/Build.pdb

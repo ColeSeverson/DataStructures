@@ -1,0 +1,90 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "Libraries/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Libraries.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Libraries.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Libraries/1.0.0": {
+      "type": "project",
+      "path": "../Libraries/Libraries.csproj",
+      "msbuildProject": "../Libraries/Libraries.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.0": [
+      "Libraries >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/coleseverson/.nuget/packages/": {},
+    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/coleseverson/Programming/DataStructures/C#/Build/Build.csproj",
+      "projectName": "Build",
+      "projectPath": "/home/coleseverson/Programming/DataStructures/C#/Build/Build.csproj",
+      "packagesPath": "/home/coleseverson/.nuget/packages/",
+      "outputPath": "/home/coleseverson/Programming/DataStructures/C#/Build/obj/",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "/home/coleseverson/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "projectReferences": {
+            "/home/coleseverson/Programming/DataStructures/C#/Libraries/Libraries.csproj": {
+              "projectPath": "/home/coleseverson/Programming/DataStructures/C#/Libraries/Libraries.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.0": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

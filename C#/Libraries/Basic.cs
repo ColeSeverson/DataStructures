@@ -13,47 +13,35 @@ namespace DataStructures {
             Head = null;
             Length = 0;
         }
-        public LinkedList(T data) {
-            Head = new Node<T>(data);
-            Length = 1;
-        }
-        public LinkedList(Node<T> node) {
-            Head = node;
-            Length = 1;
-            var current = Head;
-            while(current.Next != null) {
-                current = current.Next;
-                Length += 1;
-            }
-        }
 
         //Insertion Methods
-        public Node<T> Insert(Node<T> node) {
+        public void Insert(Node<T> node) {
+            Length += 1;
+            if(Head == null) {
+                Head = node;
+                return;
+            }
             var current = Head;
             while(current.Next != null) {
                 current = current.Next;
             }
             current.Next = node;
-            Length += 1;
-            return Head;
         }
-        public Node<T> Insert(T data) {
+        public void Insert(T data) {
             Node<T> node = new Node<T>(data);
-            return Insert(node);
+            Insert(node);
         }
-        public Node<T> Insert(List<Node<T>> list) {
+        public void Insert(List<Node<T>> list) {
             foreach(var node in list) {
                 Insert(node);
             }
-            return Head;
         }
-        public Node<T> Insert(List<T> list) {
+        public void Insert(List<T> list) {
             foreach(var data in list) {
                 Insert(data);
             }
-            return Head;
         }
-        public Node<T> InsertAt(Node<T> node, int index) {
+        public void InsertAt(Node<T> node, int index) {
             var current = Head;
             for(; index > 0 && current.Next != null; index--) {
                 current = current.Next;
@@ -61,11 +49,11 @@ namespace DataStructures {
             var temp = current.Next;
             current.Next = node;
             node.Next = temp;
-            return Head;
+            return;
         }
 
         //Deletion Methods
-        public Node<T> Delete(Node<T> node) {
+        public void Delete(Node<T> node) {
             var current = Head;
             var parent = Head;
             while(current != null) {
@@ -76,15 +64,15 @@ namespace DataStructures {
                         parent.Next = current.Next;
                     }
                     Length -= 1;
-                    return Head;
+                    return;
                 }
                 parent = current;
                 current = current.Next;
             }
             Length -= 1;
-            return Head;
+            return;
         }
-        public Node<T> Delete(T data) {
+        public void Delete(T data) {
             var current = Head;
             var parent = Head;
             while(current != null) {
@@ -95,22 +83,22 @@ namespace DataStructures {
                         parent.Next = current.Next;
                     }
                     Length -= 1;
-                    return Head;
+                    return;
                 }
                 parent = current;
                 current = current.Next;
             }
             Length -= 1;
-            return Head;
+            return;
         }
 
         //Accessor Methods
-        public Node<T> this[int i] {
+        public T this[int i] {
             get {
                 return At(i);
             }
         }
-        public Node<T> At(int i) {
+        public T At(int i) {
             if(i + 1 > Length)
                 throw new System.IndexOutOfRangeException("Indice out of range");
 
@@ -118,11 +106,11 @@ namespace DataStructures {
             for(; i > 0; i--) {
                 current = current.Next;
             }
-            return current;
+            return current.Data;
         }
 
         //Misc Methods
-        public Node<T> Reverse() {
+        public void Reverse() {
             Node<T> parent = null;
             Node<T> current = Head;
             Node<T> next = null;
@@ -133,18 +121,16 @@ namespace DataStructures {
                 parent = current;
                 current = next;
             }
-            return Head = parent;
+            Head = parent;
         }
         public override string ToString(){
             string buffer = "";
             var current = Head;
             while(current != null) {
-                buffer = buffer + current.Data;
+                buffer = buffer + " " + current.Data;
+                current = current.Next;
             }
             return buffer;
-        }
-        public void Print() {
-            Console.WriteLine(ToString());
         }
     }
 
@@ -154,23 +140,16 @@ namespace DataStructures {
         public int Count { get; private set; }
 
         //Constructors
+        //Less than 0 is less, more is greater
         public delegate int Compare(T a, T b);
         public Compare Comp { get; private set; }
         public BinaryTree(Compare compare_method) {
             Comp = compare_method;
         }
-        public BinaryTree(Node<T> root) {
-            Root = root;
-        }
-        public BinaryTree(Node<T> root, Compare compare_method) {
-            Root = root;
-            Comp = compare_method;
-        }
-
-        //Insert Methods
-        public Node<T> Insert(Node<T> node) {
+        public void Insert(Node<T> node) {
             if (Root == null) {
-                return Root = node;
+                Root = node;
+                return;
             }
             var current = Root;
             while(current != null) {
@@ -181,7 +160,7 @@ namespace DataStructures {
                         continue;
                     } else {
                         current.Left = node;
-                        return Root;
+                        return;
                     }
                 } else {
                     //Right
@@ -190,21 +169,53 @@ namespace DataStructures {
                         continue;
                     } else {
                         current.Right = node;
-                        return Root;
+                        return;
                     }
                 }
             }
-            return null;
         }
-        public Node<T> Insert(T data) {
+        public void Insert(T data) {
             var node = new Node<T>(data);
-            return Insert(node);
+            Insert(node);
         }
         //Delete Methods
-
+        private Node<T> DeleteRec(Node<T> current, T data) {
+            if(current == null) 
+                return current;
+            
+            if(Comp(data, current.Data) < 0) {
+                current.Left = DeleteRec(current.Left, data);
+            }
+            else if(Comp(data, current.Data) > 0) {
+                current.Right = DeleteRec(current.Right, data);
+            } else {
+                //We found him boys
+                if(current.Left == null) {
+                    return current.Right;
+                } else if (current.Right == null) {
+                    return current.Left;
+                } else {
+                    current.Data = FindMin(current.Right).Data;
+                    current.Right = DeleteRec(current.Right, current.Data);
+                }
+            }
+            return current;
+        }
+        public void Delete(T data) {
+            Root = DeleteRec(Root, data);
+        }
         //Accessor Methods
 
         //Misc Methods
+        private Node<T> FindMin(Node<T> current) {
+            if(current == null)
+                return null;
+
+            while(current.Left != null) {
+                current = current.Left;
+            }
+            return current;
+        }
         public void Print() {
             PrintTree(Root);
         }

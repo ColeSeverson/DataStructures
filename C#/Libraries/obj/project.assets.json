@@ -180,7 +180,8 @@
     ]
   },
   "packageFolders": {
-    "/home/coleseverson/.nuget/packages/": {}
+    "/home/coleseverson/.nuget/packages/": {},
+    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -191,6 +192,9 @@
       "packagesPath": "/home/coleseverson/.nuget/packages/",
       "outputPath": "/home/coleseverson/Programming/DataStructures/C#/Libraries/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "/home/coleseverson/.nuget/NuGet/NuGet.Config"
       ],
